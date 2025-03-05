@@ -19,22 +19,22 @@ const Navbar = () => {
         </div>
         <ul className={`md:flex space-x-6 absolute md:relative top-12 md:top-0 left-0 w-full md:w-auto bg-gray-700 md:bg-transparent p-4 md:p-0 transition-transform transform ${isOpen ? "block" : "hidden"}`}>
           <li>
-            <Link to="/" className="text-white hover:text-red-600 block py-2 md:py-0">Home</Link>
+            <Link to="/" className="text-white hover:underline  block py-2 md:py-0">Home</Link>
           </li>
           <li>
-            <Link to="/services" className="text-white hover:text-red-600 block py-2 md:py-0">Services</Link>
+            <Link to="/services" className="text-white hover:underline  block py-2 md:py-0">Services</Link>
           </li>
           <li>
-            <Link to="/contact" className="text-white hover:text-red-600 block py-2 md:py-0">Contact</Link>
+            <Link to="/contact" className="text-white hover:underline  block py-2 md:py-0">Contact</Link>
           </li>
           <li>
-            <Link to="/about" className="text-white hover:text-red-600 block py-2 md:py-0">About</Link>
+            <Link to="/about" className="text-white hover:underline  block py-2 md:py-0">About</Link>
           </li>
           <li>
-            <Link to="/login" className="text-white hover:text-red-600 block py-2 md:py-0">Login </Link>
+            <Link to="/login" className="text-white hover:underline  block py-2 md:py-0">Login </Link>
           </li>
           <li>
-            <Link to="/signup" className="text-white hover:text-red-600 block py-2 md:py-0">Signup</Link>
+            <Link to="/signup" className="text-white hover:underline  block py-2 md:py-0">Signup</Link>
           </li>
         </ul>
       </div>
