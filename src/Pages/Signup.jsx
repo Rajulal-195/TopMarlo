@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../Component/Navbar';
 import Footer from '../Component/Footer';
+import OAuth from '../Component/OAuth';
 
 export default function Signup() {
   const [user, setUser] = useState({ username: '', email: '', password: '' });
@@ -20,7 +21,7 @@ export default function Signup() {
     setError(null);
 
     try {
-      const response = await axios.post('/api/users/register', user);
+      const response = await axios.post('/api/auth/register', user);
     
       console.log('User registered:', response.data);
     } catch (err) {
@@ -79,11 +80,12 @@ export default function Signup() {
 
             <button 
               type="submit" 
-              className="w-full bg-blue-500 text-white py-2 my-6 rounded-lg hover:bg-blue-700 transition disabled:opacity-50" 
+              className="w-full bg-blue-500 text-white p-1 my-6 rounded-lg hover:bg-blue-700 transition disabled:opacity-50" 
               disabled={loading}
             >
               {loading ? 'Loading...' : 'Sign Up'}
             </button>
+            <OAuth/>
           </form>
 
           <p className="text-center">
