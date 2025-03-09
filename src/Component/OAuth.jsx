@@ -3,10 +3,13 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app } from '../Firebase';
 import { useDispatch } from 'react-redux';
 import { signinSuccess } from '../Redux/Users/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 export default function OAuth() {
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const handlegoogleAuth = async () => {
     try {
@@ -14,20 +17,24 @@ export default function OAuth() {
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider); // Ensure correct order
       console.log("google auth data", result);
-      const res = await fetch("http://localhost:1900/api/auth/google", {
+      const res = await fetch("http://localhost:1900/api/auth/google/auth", {
         method: "POST",
         headers: {
-          "content-type": "application/json"
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({ username: result.user.displayName, email: result.user.email, photo: result.user.photoURL })
-      })
+        credentials: "include",
+        body: JSON.stringify({
+          username: result.user.displayName,
+          email: result.user.email,
+          photo: result.user.photoURL
+        })
+      });
       const data = await res.json();
-      // console.log(data)
-      dispatch(signinSuccess(data))
-
-
+      toast.success("Sign in with google Success...");
+      dispatch(signinSuccess(data));
+      navigate("/")
     } catch (error) {
-      console.log("could not signup with google", error);
+      toast.success("could not signup with google", error);
     }
   }
 
