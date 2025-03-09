@@ -6,6 +6,10 @@ import Login from "./Pages/Login"
 import About from "./Pages/About"
 import Profile from "./Pages/Profile"
 import Navbar from './Component/Navbar'
+import AddProduct from './Admin/Product/AddProduct'
+import DeleteProduct from './Admin/Product/DeleteProduct'
+import Update from './Admin/Product/Update'
+import ProductList from './Admin/Product/ProductList'
 
 
 export default function App() {
@@ -18,6 +22,12 @@ export default function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/about" element={<About />} />
+                <Route path='/addproduct' element={<AddProduct />} />
+                <Route path='/deleteproduct' element={<DeleteProduct />} />
+
+                <Route path='/updateproduct' element={<Update />} />
+                <Route path='/product' element={<ProductList />} />
+
             </Routes>
         </BrowserRouter>
     </>

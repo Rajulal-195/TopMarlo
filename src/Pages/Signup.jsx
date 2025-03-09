@@ -5,11 +5,15 @@ import Navbar from '../Component/Navbar';
 import Footer from '../Component/Footer';
 import OAuth from '../Component/OAuth';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 
 export default function Signup() {
   const [user, setUser] = useState({ username: '', email: '', password: '' });
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+
+
+  const { error, loading } = useSelector(state => state.auth);
   const Navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +24,7 @@ export default function Signup() {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    dispatch()
 
     try {
       const response = await axios.post('/api/auth/register', user);

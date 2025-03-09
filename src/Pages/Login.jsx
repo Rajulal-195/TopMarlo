@@ -11,11 +11,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false); // Added loading state
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true); // Set loading to true
+
+    
 
     try {
       const res = await axios.post(
@@ -25,13 +28,13 @@ const Login = () => {
       );
 
       localStorage.setItem("token", res.data.token);
-      
+
       toast.success("Login Success...")
 
-      navigate("/") ; // Redirect after login
+      navigate("/"); // Redirect after login
     } catch (err) {
       setError(err.response?.data?.message || "Login failed. Try again!");
-      toast.error(error)
+      toast.error(So)
     } finally {
       setLoading(false); // Ensure loading is set to false after request
     }
